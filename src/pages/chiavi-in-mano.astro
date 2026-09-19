@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { u } from '../lib/url';
 
 const packages = [
   {
@@ -83,7 +84,7 @@ const packages = [
             </ul>
             <div class="mt-auto pt-8">
               <a
-                href="/contatti/"
+                href={u('/contatti/')}
                 class:list={['inline-flex', pkg.featured ? 'btn-primary' : 'btn-secondary']}
               >
                 Richiedi informazioni
@@ -114,7 +115,7 @@ const packages = [
         Ogni progetto è diverso: se non trovi la formula giusta, raccontaci le tue esigenze e
         costruiamo insieme la soluzione più adatta.
       </p>
-      <a href="/contatti/" class="mt-6 inline-block font-medium text-brand-600 hover:underline">
+      <a href={u('/contatti/')} class="mt-6 inline-block font-medium text-brand-600 hover:underline">
         Contattaci &rarr;
       </a>
     </div>

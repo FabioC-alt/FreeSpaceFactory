@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { u } from '../lib/url';
 ---
 
 <BaseLayout title="Pagina non trovata" description="La pagina richiesta non è stata trovata." noindex>
@@ -9,6 +10,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="mt-4 max-w-md text-ink/70">
       La pagina che cerchi non esiste più o è stata spostata.
     </p>
-    <a href="/" class="btn-primary mt-8">Torna alla home</a>
+    <a href={u('/')} class="btn-primary mt-8">Torna alla home</a>
   </section>
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { u } from '../../lib/url';
 ---
 
 <BaseLayout
@@ -11,6 +12,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <p class="text-sm font-medium uppercase tracking-wide text-brand-600">Messaggio inviato</p>
     <h1 class="mt-4 font-serif text-4xl sm:text-5xl">Grazie per averci scritto</h1>
     <p class="mt-4 max-w-md text-ink/70">Ti risponderemo il prima possibile via email.</p>
-    <a href="/" class="btn-primary mt-8">Torna alla home</a>
+    <a href={u('/')} class="btn-primary mt-8">Torna alla home</a>
   </section>
 </BaseLayout>

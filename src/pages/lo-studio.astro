@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/constants';
-
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+import { u } from '../lib/url';
 
 const steps = [
   {
@@ -56,7 +55,7 @@ const steps = [
       </div>
       <div class="aspect-[4/3] overflow-hidden bg-brand-100">
         <img
-          src={`${base}images/projects/nomentano/cover.jpg`}
+          src={u('images/projects/nomentano/cover.jpg')}
           alt="Interno progettato dallo studio Free Space Factory, progetto Nomentano"
           loading="lazy"
           width="1000"
@@ -85,7 +84,7 @@ const steps = [
   </section>
 
   <section class="container-page py-16 text-center">
-    <a href="/architetti/" class="font-medium text-brand-600 hover:underline">
+    <a href={u('/architetti/')} class="font-medium text-brand-600 hover:underline">
       Conosci gli architetti dello studio &rarr;
     </a>
   </section>

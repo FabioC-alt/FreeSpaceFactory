@@ -18,8 +18,8 @@ interface Props {
 const { project } = Astro.props;
 const { title, location, status, coverImage, coverAlt, credits, gallery, seoDescription } = project.data;
 const { Content } = await render(project);
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const coverSrc = `${base}${coverImage.replace(/^\//, '')}`;
+import { u } from '../../lib/url';
+const coverSrc = u(coverImage);
 
 const creditLabels: Record<string, string> = {
   design: 'Progettazione architettonica e direzione lavori',
@@ -82,7 +82,7 @@ const creditEntries = Object.entries(credits).filter(([, value]) => value);
     }
 
     <div class="container-page pb-20">
-      <a href="/progetti/" class="font-medium text-brand-600 hover:underline">
+      <a href={u('/progetti/')} class="font-medium text-brand-600 hover:underline">
         &larr; Tutti i progetti
       </a>
     </div>

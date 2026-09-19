@@ -1,5 +1,6 @@
 ---
 import { SITE, NAV_LINKS } from '../lib/constants';
+import { u } from '../lib/url';
 
 const year = new Date().getFullYear();
 ---
@@ -17,7 +18,7 @@ const year = new Date().getFullYear();
         {
           NAV_LINKS.map((link) => (
             <li>
-              <a href={link.href} class="text-paper/80 transition-colors hover:text-paper">
+              <a href={u(link.href)} class="text-paper/80 transition-colors hover:text-paper">
                 {link.label}
               </a>
             </li>

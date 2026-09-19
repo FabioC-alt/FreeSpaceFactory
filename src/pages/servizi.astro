@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { u } from '../lib/url';
 
 const services = [
   {
@@ -51,7 +52,7 @@ const services = [
   <section class="bg-ink py-20 text-paper">
     <div class="container-page text-center">
       <h2 class="font-serif text-3xl sm:text-4xl">Parliamo del tuo progetto</h2>
-      <a href="/contatti/" class="btn mt-8 inline-flex bg-paper text-ink hover:bg-brand-300">
+      <a href={u('/contatti/')} class="btn mt-8 inline-flex bg-paper text-ink hover:bg-brand-300">
         Contattaci
       </a>
     </div>

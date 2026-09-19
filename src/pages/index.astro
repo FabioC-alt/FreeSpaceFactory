@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { SITE } from '../lib/constants';
+import { u } from '../lib/url';
 
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const featuredProjects = projects.slice(0, 6);
@@ -40,7 +40,7 @@ const services = [
   <!-- Hero -->
   <section class="relative flex min-h-[85vh] items-end overflow-hidden bg-ink text-paper">
     <img
-      src={`${base}images/hero/home.jpg`}
+      src={u('images/hero/home.jpg')}
       alt="Interno progettato dallo studio Free Space Factory"
       class="absolute inset-0 h-full w-full object-cover opacity-70"
       width="1920"
@@ -52,8 +52,8 @@ const services = [
         La vita attraversa il tempo, ma soprattutto lo spazio.
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
-        <a href="/progetti/" class="btn bg-paper text-ink hover:bg-brand-300">Scopri i progetti</a>
-        <a href="/contatti/" class="btn border-paper text-paper hover:bg-paper hover:text-ink">
+        <a href={u('/progetti/')} class="btn bg-paper text-ink hover:bg-brand-300">Scopri i progetti</a>
+        <a href={u('/contatti/')} class="btn border-paper text-paper hover:bg-paper hover:text-ink">
           Contattaci
         </a>
       </div>
@@ -73,7 +73,7 @@ const services = [
           le scale: dall'impianto urbano, con particolare attenzione all'urbanistica partecipata,
           fino alle ristrutturazioni di appartamenti e all'interior design.
         </p>
-        <a href="/lo-studio/" class="inline-block font-medium text-brand-600 hover:underline">
+        <a href={u('/lo-studio/')} class="inline-block font-medium text-brand-600 hover:underline">
           Scopri lo studio &rarr;
         </a>
       </div>
@@ -94,7 +94,7 @@ const services = [
           ))
         }
       </div>
-      <a href="/servizi/" class="mt-12 inline-block font-medium text-brand-600 hover:underline">
+      <a href={u('/servizi/')} class="mt-12 inline-block font-medium text-brand-600 hover:underline">
         Tutti i servizi &rarr;
       </a>
     </div>
@@ -104,14 +104,14 @@ const services = [
   <section class="container-page py-20 sm:py-28">
     <div class="flex items-end justify-between gap-6">
       <h2 class="font-serif text-3xl sm:text-4xl">Progetti</h2>
-      <a href="/progetti/" class="hidden font-medium text-brand-600 hover:underline sm:inline-block">
+      <a href={u('/progetti/')} class="hidden font-medium text-brand-600 hover:underline sm:inline-block">
         Vedi tutti &rarr;
       </a>
     </div>
     <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
       {featuredProjects.map((project) => <ProjectCard project={project} />)}
     </div>
-    <a href="/progetti/" class="mt-10 inline-block font-medium text-brand-600 hover:underline sm:hidden">
+    <a href={u('/progetti/')} class="mt-10 inline-block font-medium text-brand-600 hover:underline sm:hidden">
       Vedi tutti i progetti &rarr;
     </a>
   </section>
@@ -123,7 +123,7 @@ const services = [
       <p class="mx-auto mt-4 max-w-xl text-paper/75">
         Raccontaci la tua idea: ti seguiamo dalla progettazione alla direzione lavori.
       </p>
-      <a href="/contatti/" class="btn mt-8 inline-flex bg-paper text-ink hover:bg-brand-300">
+      <a href={u('/contatti/')} class="btn mt-8 inline-flex bg-paper text-ink hover:bg-brand-300">
         Contattaci
       </a>
     </div>
