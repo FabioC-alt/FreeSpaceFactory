@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "freespacefactory-dev",
+      "runtimeExecutable": "C:\\Users\\FabioC\\Projects\\SitoFlavia\\run-dev.cmd",
+      "runtimeArgs": [],
+      "port": 4321
+    }
+  ]
+}

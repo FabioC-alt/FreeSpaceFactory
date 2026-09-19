@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/constants';
+
+const architects = [
+  {
+    name: 'Flavia Rosano',
+    bio: [
+      'Laureata nel 2015 con lode presso l’università "Sapienza" di Roma, studia presso l’università "Universidade Técnica de Lisboa", Portogallo, e frequenta un master di II livello in Architettura e Progetto Urbano presso l’École Supérieure d’Architecture de Paris-Belleville, con periodi di studio in Cina, a Shanghai, presso la Tongji University.',
+      'Lavora presso studi di architettura di Roma che si occupano di interior design, superbonus e pratiche edilizie, presso cui svolge ancora attività di consulenza.',
+    ],
+  },
+  {
+    name: 'Laura Gramaccini',
+    bio: [
+      'Laureata nel 2015 con lode presso l’università "Sapienza" di Roma, con una tesi presso l’Università La Salle di Bogotà, Colombia. Frequenta inoltre un master di II livello alla "Sapienza": URBAM – Urbanistica nell’Amministrazione Pubblica (2018–2019).',
+      'Collabora con associazioni che si occupano di consulenza alle pubbliche amministrazioni per la progettazione partecipata a Santiago del Cile e con studi di architettura di Roma attivi in interior design, superbonus e pratiche edilizie, presso cui svolge ancora attività di consulenza.',
+    ],
+  },
+];
+
+const architectsJsonLd = architects.map((architect) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: architect.name,
+  jobTitle: 'Architetto',
+  worksFor: {
+    '@type': 'Architect',
+    name: SITE.legalName,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: SITE.addressLocality,
+    addressCountry: SITE.country,
+  },
+}));
+---
+
+<BaseLayout
+  title="Architetti a Roma: Flavia Rosano e Laura Gramaccini"
+  description="Flavia Rosano e Laura Gramaccini, architette e fondatrici dello studio di architettura Free Space Factory a Roma."
+>
+  {
+    architectsJsonLd.map((json) => (
+      <script type="application/ld+json" set:html={JSON.stringify(json)} />
+    ))
+  }
+
+  <section class="container-page py-20 sm:py-28">
+    <h1 class="font-serif text-4xl sm:text-5xl">Gli Architetti</h1>
+    <p class="mt-4 max-w-2xl text-ink/70">
+      Flavia Rosano e Laura Gramaccini, architette e fondatrici di Free Space Factory a Roma.
+    </p>
+
+    <div class="mt-12 aspect-[2/3] max-w-sm overflow-hidden bg-brand-100">
+      <img
+        src="/images/team/flavia-laura.jpg"
+        alt="Le architette Flavia Rosano e Laura Gramaccini, fondatrici di Free Space Factory"
+        loading="lazy"
+        width="695"
+        height="1024"
+        class="h-full w-full object-cover"
+      />
+    </div>
+
+    <div class="mt-16 grid gap-16 md:grid-cols-2">
+      {
+        architects.map((architect) => (
+          <article>
+            <h2 class="font-serif text-2xl">{architect.name}</h2>
+            <div class="mt-3 space-y-4 text-ink/75">
+              {architect.bio.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

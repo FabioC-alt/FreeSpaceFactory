@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const packages = [
+  {
+    name: 'Pacchetto Base',
+    price: '€ 2.000',
+    includes: [
+      'Progetto architettonico distributivo e funzionale, con definizione di arredi fissi e materiali principali',
+      'Computo metrico con elenco delle opere da eseguire, da inviare alle ditte per il preventivo',
+      'Assistenza ai contratti con le imprese',
+      'Pratica amministrativa: CILA/SCIA e presentazione fine lavori',
+      'Direzione lavori esclusa (da concordare a parte)',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Pacchetto Intermedio',
+    price: '€ 4.500',
+    includes: [
+      'Mood board e progetto distributivo e funzionale, con elaborati grafici e descrittivi',
+      '2 render/fotomontaggi',
+      'Computo metrico estimativo ed elenco opere da inviare alle ditte',
+      'Assistenza ai contratti con le imprese',
+      'Pratica amministrativa: CILA/SCIA e presentazione fine lavori',
+      'Direzione lavori nei momenti chiave del cantiere',
+    ],
+    featured: true,
+  },
+  {
+    name: 'Pacchetto Luxury',
+    price: '€ 6.000',
+    includes: [
+      'Mood board, progetto distributivo, elaborati esecutivi e progetto di illuminazione',
+      '3 render/fotomontaggi',
+      'Computo metrico estimativo e cronoprogramma dei tempi di esecuzione',
+      'Gara d’appalto tra diverse ditte e assistenza al contratto con l’impresa scelta',
+      'Pratica amministrativa: CILA/SCIA e presentazione fine lavori',
+      'Direzione lavori con riunioni di cantiere',
+      'Direzione artistica: visite a showroom e assistenza alla scelta di finiture e arredi',
+    ],
+    featured: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Chiavi in Mano"
+  description="Pacchetti chiavi in mano dello studio Free Space Factory: progettazione, pratiche edilizie e direzione lavori a prezzo definito, a Roma."
+>
+  <section class="container-page py-20 sm:py-28">
+    <h1 class="font-serif text-4xl sm:text-5xl">Chiavi in Mano</h1>
+    <p class="mt-4 max-w-2xl text-ink/70">
+      Formule pensate per affidarci il vostro progetto con chiarezza fin dall'inizio, dalla prima
+      consulenza alla consegna finale.
+    </p>
+
+    <div class="mt-16 grid gap-8 lg:grid-cols-3">
+      {
+        packages.map((pkg) => (
+          <article
+            class:list={[
+              'flex flex-col border p-8',
+              pkg.featured ? 'border-brand-500' : 'border-ink/15',
+            ]}
+          >
+            {pkg.featured && (
+              <span class="mb-4 inline-block text-xs font-medium uppercase tracking-wide text-brand-600">
+                Il più richiesto
+              </span>
+            )}
+            <h2 class="font-serif text-2xl">{pkg.name}</h2>
+            <p class="mt-3 font-serif text-3xl">{pkg.price}</p>
+            <ul class="mt-6 space-y-3 text-sm text-ink/80">
+              {pkg.includes.map((item) => (
+                <li class="flex gap-2">
+                  <span aria-hidden="true" class="text-brand-600">
+                    &middot;
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto pt-8">
+              <a
+                href="/contatti/"
+                class:list={['inline-flex', pkg.featured ? 'btn-primary' : 'btn-secondary']}
+              >
+                Richiedi informazioni
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 max-w-3xl text-sm text-ink/60">
+      <p>
+        <strong class="text-ink/80">Escluso dalla parcella:</strong> autorizzazioni, bolli e oneri
+        per le pratiche amministrative (es. CILA, variazione catastale).
+      </p>
+      <p class="mt-2">
+        <strong class="text-ink/80">Escluso dall'incarico:</strong> eventuale progetto strutturale e
+        pratiche amministrative relative a demolizione/ricostruzione di murature portanti;
+        coordinatore sicurezza, se necessario.
+      </p>
+      <p class="mt-4 text-xs text-ink/50">I prezzi indicati sono a partire da e possono variare in base alla metratura e alla complessità dell'intervento.</p>
+    </div>
+  </section>
+
+  <section class="bg-brand-50 py-16">
+    <div class="container-page text-center">
+      <p class="text-ink/70">
+        Ogni progetto è diverso: se non trovi la formula giusta, raccontaci le tue esigenze e
+        costruiamo insieme la soluzione più adatta.
+      </p>
+      <a href="/contatti/" class="mt-6 inline-block font-medium text-brand-600 hover:underline">
+        Contattaci &rarr;
+      </a>
+    </div>
+  </section>
+</BaseLayout>

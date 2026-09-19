@@ -1,0 +1,88 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Gallery from '../../components/Gallery.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, location, status, coverImage, coverAlt, credits, gallery, seoDescription } = project.data;
+const { Content } = await render(project);
+
+const creditLabels: Record<string, string> = {
+  design: 'Progettazione architettonica e direzione lavori',
+  lighting: 'Illuminazione',
+  photography: 'Fotografia',
+  rendering: 'Render',
+  contractor: 'Ditta esecutrice',
+  carpentry: 'Falegnameria',
+};
+
+const creditEntries = Object.entries(credits).filter(([, value]) => value);
+---
+
+<BaseLayout title={title} description={seoDescription} image={coverImage}>
+  <article>
+    <div class="relative h-[60vh] min-h-[400px] overflow-hidden bg-ink">
+      <img
+        src={coverImage}
+        alt={coverAlt}
+        class="h-full w-full object-cover opacity-90"
+        width="1600"
+        height="1000"
+      />
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-8 sm:p-12">
+        <div class="container-page">
+          <h1 class="font-serif text-4xl text-paper sm:text-5xl">{title}</h1>
+          <p class="mt-2 text-paper/80">{location} &middot; {status}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-page grid gap-12 py-16 md:grid-cols-3 md:gap-16">
+      <div class="max-w-none text-lg leading-relaxed text-ink/80 md:col-span-2">
+        <Content />
+      </div>
+
+      {
+        creditEntries.length > 0 && (
+          <aside>
+            <h2 class="text-sm font-medium uppercase tracking-wide text-ink/50">Crediti</h2>
+            <dl class="mt-4 space-y-4">
+              {creditEntries.map(([key, value]) => (
+                <div>
+                  <dt class="text-sm text-ink/50">{creditLabels[key] ?? key}</dt>
+                  <dd class="mt-0.5">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        )
+      }
+    </div>
+
+    {
+      gallery.length > 0 && (
+        <div class="container-page pb-20">
+          <Gallery images={gallery} />
+        </div>
+      )
+    }
+
+    <div class="container-page pb-20">
+      <a href="/progetti/" class="font-medium text-brand-600 hover:underline">
+        &larr; Tutti i progetti
+      </a>
+    </div>
+  </article>
+</BaseLayout>

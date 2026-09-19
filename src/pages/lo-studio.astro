@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/constants';
+
+const steps = [
+  {
+    title: 'Avvicinamento al progetto',
+    description:
+      'Il progetto viene costruito su misura per soddisfare tutte le esigenze e rispondere alle diverse richieste in maniera metodica e attenta, attraverso le fasi Preliminare, Definitivo ed Esecutivo, con render, immagini 3D ed elaborati grafici alle opportune scale metriche.',
+  },
+  {
+    title: 'Aspetti burocratico-amministrativi',
+    description: 'Presentazione delle pratiche edilizie presso gli uffici comunali e gli altri enti competenti.',
+  },
+  {
+    title: 'Computi e forniture',
+    description: 'Redazione di computi metrici e assistenza all’acquisto di forniture.',
+  },
+  {
+    title: 'Gare d’appalto',
+    description: 'Assistenza alle gare d’appalto e redazione dei contratti con le ditte esecutrici.',
+  },
+  {
+    title: 'Direzione lavori',
+    description: 'Direzione lavori con assidua presenza in cantiere, dall’avvio alla consegna.',
+  },
+];
+---
+
+<BaseLayout
+  title="Lo Studio"
+  description="Free Space Factory è uno studio di architettura fondato a Roma nel 2019 da Flavia Rosano e Laura Gramaccini: la nostra filosofia e il nostro metodo di lavoro."
+>
+  <section class="container-page py-20 sm:py-28">
+    <h1 class="font-serif text-4xl sm:text-5xl">Lo Studio</h1>
+
+    <div class="mt-10 grid gap-12 md:grid-cols-2 md:gap-16">
+      <div class="space-y-5 text-ink/80">
+        <p>
+          Lo studio Free Space Factory, con sede a Roma, è stato fondato nel {SITE.foundingYear} dagli
+          architetti {SITE.founders.join(' e ')} e si occupa di progettazione architettonica a tutte
+          le scale: a partire dall'impianto urbano, con particolare attenzione all'urbanistica
+          partecipata, fino ad arrivare alle ristrutturazioni di appartamenti e all'interior design.
+        </p>
+        <p>
+          Il nome stesso esprime il concetto di una fabbrica di idee e progetti, libera dalle
+          costrizioni di un pensiero preordinato, ma costruita ad hoc in base alle differenti
+          situazioni, committenti e scale di progetto.
+        </p>
+        <p>
+          Lo studio lavora sia nel comune di Roma sia fuori sede, seguendo i committenti attraverso
+          tutte le fasi del progetto.
+        </p>
+      </div>
+      <div class="aspect-[4/3] overflow-hidden bg-brand-100">
+        <img
+          src="/images/projects/nomentano/cover.jpg"
+          alt="Interno progettato dallo studio Free Space Factory, progetto Nomentano"
+          loading="lazy"
+          width="1000"
+          height="750"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-brand-50 py-20 sm:py-28">
+    <div class="container-page">
+      <h2 class="font-serif text-3xl sm:text-4xl">Come lavoriamo</h2>
+      <ol class="mt-12 grid gap-10 sm:grid-cols-2">
+        {
+          steps.map((step, i) => (
+            <li>
+              <span class="text-sm font-medium text-brand-600">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="mt-1 font-serif text-xl">{step.title}</h3>
+              <p class="mt-2 text-ink/70">{step.description}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="container-page py-16 text-center">
+    <a href="/architetti/" class="font-medium text-brand-600 hover:underline">
+      Conosci gli architetti dello studio &rarr;
+    </a>
+  </section>
+</BaseLayout>

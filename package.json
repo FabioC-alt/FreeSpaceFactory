@@ -1,0 +1,26 @@
+{
+  "name": "freespacefactory",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "fix:native-blocked": "node scripts/fix-wasm-fallback.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "optionalDependencies": {
+    "@bruits/satteri-wasm32-wasi": "^0.10.5",
+    "@emnapi/core": "^1.11.1",
+    "@emnapi/runtime": "^1.11.1",
+    "@napi-rs/wasm-runtime": "^1.2.4"
+  }
+}

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const services = [
+  {
+    title: 'Interior design',
+    description:
+      'Progettazione su misura, per soddisfare tutte le esigenze e rispondere alle diverse richieste in maniera metodica e attenta, coniugando spazi, funzionalità e stile.',
+  },
+  {
+    title: 'Pratiche amministrative',
+    description:
+      'Presentazione di pratiche edilizie presso gli uffici comunali e gli altri enti competenti, dalla CILA alla SCIA fino al permesso di costruire.',
+  },
+  {
+    title: 'Progettazione urbana',
+    description:
+      'Reinterpretazione dello spazio pubblico e pianificazione urbanistica partecipata, con particolare attenzione al coinvolgimento della cittadinanza.',
+  },
+  {
+    title: 'Architettura sostenibile',
+    description:
+      'Progettazione integrata, energetica ed ecosostenibile, a livello architettonico e impiantistico, per spazi più efficienti e a basso impatto.',
+  },
+];
+---
+
+<BaseLayout
+  title="Servizi"
+  description="I servizi dello studio Free Space Factory: interior design, pratiche amministrative, progettazione urbana e architettura sostenibile a Roma."
+>
+  <section class="container-page py-20 sm:py-28">
+    <h1 class="font-serif text-4xl sm:text-5xl">Servizi</h1>
+    <p class="mt-4 max-w-2xl text-ink/70">
+      Seguiamo i nostri committenti in ogni fase del progetto, dall'idea alla direzione lavori.
+    </p>
+
+    <div class="mt-16 grid gap-x-10 gap-y-16 sm:grid-cols-2">
+      {
+        services.map((service, i) => (
+          <div>
+            <span class="text-sm font-medium text-brand-600">{String(i + 1).padStart(2, '0')}</span>
+            <h2 class="mt-1 font-serif text-2xl">{service.title}</h2>
+            <p class="mt-3 text-ink/70">{service.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-ink py-20 text-paper">
+    <div class="container-page text-center">
+      <h2 class="font-serif text-3xl sm:text-4xl">Parliamo del tuo progetto</h2>
+      <a href="/contatti/" class="btn mt-8 inline-flex bg-paper text-ink hover:bg-brand-300">
+        Contattaci
+      </a>
+    </div>
+  </section>
+</BaseLayout>

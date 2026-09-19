@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE } from '../lib/constants';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const featuredProjects = projects.slice(0, 6);
+
+const services = [
+  {
+    title: 'Interior design',
+    description:
+      'Progettazione su misura, per soddisfare tutte le esigenze e rispondere alle diverse richieste in maniera metodica e attenta, coniugando spazi, funzionalità e stile.',
+  },
+  {
+    title: 'Pratiche amministrative',
+    description:
+      'Presentazione di pratiche edilizie presso gli uffici comunali ed altri enti competenti.',
+  },
+  {
+    title: 'Progettazione urbana',
+    description:
+      'Reinterpretazione dello spazio pubblico e pianificazione urbanistica partecipata.',
+  },
+  {
+    title: 'Architettura sostenibile',
+    description:
+      'Progettazione integrata, energetica ed ecosostenibile, a livello architettonico e impiantistico.',
+  },
+];
+---
+
+<BaseLayout
+  title="Free Space Factory | Architetti a Roma"
+  description={SITE.description}
+>
+  <!-- Hero -->
+  <section class="relative flex min-h-[85vh] items-end overflow-hidden bg-ink text-paper">
+    <img
+      src="/images/hero/home.jpg"
+      alt="Interno progettato dallo studio Free Space Factory"
+      class="absolute inset-0 h-full w-full object-cover opacity-70"
+      width="1920"
+      height="1200"
+    />
+    <div class="container-page relative z-10 py-16">
+      <h1 class="max-w-3xl font-serif text-5xl sm:text-6xl md:text-7xl">Liberi di spaziare</h1>
+      <p class="mt-6 max-w-xl text-lg text-paper/85">
+        La vita attraversa il tempo, ma soprattutto lo spazio.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/progetti/" class="btn bg-paper text-ink hover:bg-brand-300">Scopri i progetti</a>
+        <a href="/contatti/" class="btn border-paper text-paper hover:bg-paper hover:text-ink">
+          Contattaci
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro / about -->
+  <section class="container-page py-20 sm:py-28">
+    <div class="grid gap-10 md:grid-cols-2 md:gap-16">
+      <h2 class="font-serif text-3xl sm:text-4xl">
+        Una fabbrica di idee e progetti, libera dalle costrizioni di un pensiero preordinato.
+      </h2>
+      <div class="space-y-4 text-ink/80">
+        <p>
+          Lo studio Free Space Factory, con sede a Roma, è stato fondato nel {SITE.foundingYear} dagli
+          architetti {SITE.founders.join(' e ')} e si occupa di progettazione architettonica a tutte
+          le scale: dall'impianto urbano, con particolare attenzione all'urbanistica partecipata,
+          fino alle ristrutturazioni di appartamenti e all'interior design.
+        </p>
+        <a href="/lo-studio/" class="inline-block font-medium text-brand-600 hover:underline">
+          Scopri lo studio &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="bg-brand-50 py-20 sm:py-28">
+    <div class="container-page">
+      <h2 class="font-serif text-3xl sm:text-4xl">I nostri servizi</h2>
+      <div class="mt-12 grid gap-10 sm:grid-cols-2">
+        {
+          services.map((service) => (
+            <div>
+              <h3 class="font-serif text-xl">{service.title}</h3>
+              <p class="mt-2 text-ink/70">{service.description}</p>
+            </div>
+          ))
+        }
+      </div>
+      <a href="/servizi/" class="mt-12 inline-block font-medium text-brand-600 hover:underline">
+        Tutti i servizi &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="container-page py-20 sm:py-28">
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="font-serif text-3xl sm:text-4xl">Progetti</h2>
+      <a href="/progetti/" class="hidden font-medium text-brand-600 hover:underline sm:inline-block">
+        Vedi tutti &rarr;
+      </a>
+    </div>
+    <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <a href="/progetti/" class="mt-10 inline-block font-medium text-brand-600 hover:underline sm:hidden">
+      Vedi tutti i progetti &rarr;
+    </a>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-ink py-20 text-paper">
+    <div class="container-page text-center">
+      <h2 class="font-serif text-3xl sm:text-4xl">Hai un progetto in mente?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-paper/75">
+        Raccontaci la tua idea: ti seguiamo dalla progettazione alla direzione lavori.
+      </p>
+      <a href="/contatti/" class="btn mt-8 inline-flex bg-paper text-ink hover:bg-brand-300">
+        Contattaci
+      </a>
+    </div>
+  </section>
+</BaseLayout>

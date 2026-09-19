@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../lib/constants';
+
+const thankYouUrl = new URL('/contatti/grazie/', SITE.url).toString();
+---
+
+<BaseLayout
+  title="Contatti"
+  description="Contatta lo studio di architetti Free Space Factory a Roma per informazioni o richieste di preventivo."
+>
+  <section class="container-page py-20 sm:py-28">
+    <h1 class="font-serif text-4xl sm:text-5xl">Contatti</h1>
+    <p class="mt-4 max-w-xl text-ink/70">
+      Raccontaci il tuo progetto: ti rispondiamo via email il prima possibile.
+    </p>
+
+    <div class="mt-14 grid gap-16 lg:grid-cols-2">
+      <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        class="space-y-6"
+      >
+        <input type="hidden" name="access_key" value={SITE.web3formsAccessKey} />
+        <input type="hidden" name="subject" value="Nuovo messaggio dal sito Free Space Factory" />
+        <input type="hidden" name="redirect" value={thankYouUrl} />
+        <input type="text" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+        <div>
+          <label for="name" class="text-sm font-medium uppercase tracking-wide text-ink/50">
+            Nome
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            class="mt-2 w-full border border-ink/20 bg-transparent px-4 py-3 text-ink outline-none focus:border-brand-500"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="text-sm font-medium uppercase tracking-wide text-ink/50">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="mt-2 w-full border border-ink/20 bg-transparent px-4 py-3 text-ink outline-none focus:border-brand-500"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="text-sm font-medium uppercase tracking-wide text-ink/50">
+            Messaggio
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="mt-2 w-full border border-ink/20 bg-transparent px-4 py-3 text-ink outline-none focus:border-brand-500"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Invia messaggio</button>
+      </form>
+
+      <div>
+        <div>
+          <h2 class="text-sm font-medium uppercase tracking-wide text-ink/50">Email</h2>
+          <a href={`mailto:${SITE.email}`} class="mt-2 block font-serif text-2xl hover:text-brand-600">
+            {SITE.email}
+          </a>
+        </div>
+        <div class="mt-10">
+          <h2 class="text-sm font-medium uppercase tracking-wide text-ink/50">Sede</h2>
+          <p class="mt-2 font-serif text-2xl">{SITE.city}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

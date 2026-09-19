@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #211f1c;
+  --color-paper: #f7f4ee;
+
+  /* Teal derived from the studio's real logo mark (#0f8a90) */
+  --color-brand-50: #eef7f7;
+  --color-brand-100: #d3ecec;
+  --color-brand-200: #a8d9da;
+  --color-brand-300: #78c1c3;
+  --color-brand-400: #3aa3a6;
+  --color-brand-500: #0f8a90;
+  --color-brand-600: #0c6f74;
+  --color-brand-700: #0a595d;
+  --color-brand-800: #08494c;
+  --color-brand-900: #073a3c;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: Inter, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif font-normal tracking-tight;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1200px] px-6 sm:px-8;
+  }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-sm border border-ink px-6 py-3 text-sm font-medium uppercase tracking-wide transition-colors;
+}
+
+@utility btn-primary {
+  @apply btn bg-ink text-paper hover:border-brand-700 hover:bg-brand-700;
+}
+
+@utility btn-secondary {
+  @apply btn bg-transparent text-ink hover:bg-ink hover:text-paper;
+}

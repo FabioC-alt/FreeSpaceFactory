@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Progetti"
+  description="I progetti realizzati e in corso dello studio di architettura Free Space Factory a Roma: interior design, ristrutturazioni e progettazione urbana."
+>
+  <section class="container-page py-20 sm:py-28">
+    <h1 class="font-serif text-4xl sm:text-5xl">Progetti</h1>
+    <p class="mt-4 max-w-2xl text-ink/70">
+      Una selezione di lavori realizzati e in corso, tra ristrutturazioni residenziali, interior
+      design e spazi esterni.
+    </p>
+
+    <div class="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</BaseLayout>
