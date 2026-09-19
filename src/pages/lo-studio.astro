@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/constants';
 
+const base = import.meta.env.BASE_URL;
+
 const steps = [
   {
     title: 'Avvicinamento al progetto',
@@ -54,7 +56,7 @@ const steps = [
       </div>
       <div class="aspect-[4/3] overflow-hidden bg-brand-100">
         <img
-          src="/images/projects/nomentano/cover.jpg"
+          src={`${base}images/projects/nomentano/cover.jpg`}
           alt="Interno progettato dallo studio Free Space Factory, progetto Nomentano"
           loading="lazy"
           width="1000"

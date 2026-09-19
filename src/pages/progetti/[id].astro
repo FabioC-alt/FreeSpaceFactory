@@ -18,6 +18,8 @@ interface Props {
 const { project } = Astro.props;
 const { title, location, status, coverImage, coverAlt, credits, gallery, seoDescription } = project.data;
 const { Content } = await render(project);
+const base = import.meta.env.BASE_URL;
+const coverSrc = `${base}${coverImage.replace(/^\//, '')}`;
 
 const creditLabels: Record<string, string> = {
   design: 'Progettazione architettonica e direzione lavori',
@@ -35,7 +37,7 @@ const creditEntries = Object.entries(credits).filter(([, value]) => value);
   <article>
     <div class="relative h-[60vh] min-h-[400px] overflow-hidden bg-ink">
       <img
-        src={coverImage}
+        src={coverSrc}
         alt={coverAlt}
         class="h-full w-full object-cover opacity-90"
         width="1600"

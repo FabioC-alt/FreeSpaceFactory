@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { images } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
 const categories = [...new Set(images.map((img) => img.category))];
 ---
@@ -24,7 +25,7 @@ const categories = [...new Set(images.map((img) => img.category))];
           .map((img) => (
             <div class="aspect-[4/3] overflow-hidden bg-brand-100">
               <img
-                src={img.src}
+                src={`${base}${img.src.replace(/^\//, '')}`}
                 alt={img.alt}
                 loading="lazy"
                 width="600"
