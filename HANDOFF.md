@@ -27,9 +27,10 @@ reference sites for inspiration, verbal instructions relayed from calls.
   the actual brand asset, real brand color (`#0f8a90`, a teal) extracted from the logo file itself
   — this replaced an initially-invented sage-green palette.
 - Real pricing: the "Chiavi in Mano" package cards (Base €2.000 / Intermedio €4.500 / Luxury
-  €6.000) come from two versions of a client-supplied `.docx` quote sheet (the second superseded
-  the first with simplified wording — same prices, tighter copy). **These prices are explicitly
-  provisional per the client** — see Open Items below.
+  €6.000) come from a client-supplied `.docx` quote sheet, now in
+  `docs/client-materials/PREVENTIVI PACCHETTI_17092026.docx` (this superseded an earlier draft with
+  the same prices but more verbose wording; the earlier file no longer exists). **These prices are
+  explicitly provisional per the client** — see Open Items below.
 - A working contact form (Web3Forms — no backend needed) is wired up but **not yet functional**
   until a real access key is added (see Open Items).
 - The site currently runs two ways on this machine:
