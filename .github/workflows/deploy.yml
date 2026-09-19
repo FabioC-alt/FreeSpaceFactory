@@ -26,21 +26,11 @@ jobs:
         with:
           node-version: 22
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Install dependencies
         run: npm install
 
       - name: Build with Astro
-        env:
-          SITE: ${{ steps.pages.outputs.origin }}
-          BASE: ${{ steps.pages.outputs.base_path }}
-        run: |
-          node_modules/.bin/astro build \
-            --site "$SITE" \
-            --base "$BASE"
+        run: node_modules/.bin/astro build --site "https://fabioc-alt.github.io" --base "/FreeSpaceFactory/"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
