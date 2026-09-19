@@ -7,7 +7,7 @@ interface Props {
 
 const { project } = Astro.props;
 const { title, location, coverImage, coverAlt, status } = project.data;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 // coverImage starts with '/' (e.g. /images/...), strip it so base+path is correct
 const coverSrc = `${base}${coverImage.replace(/^\//, '')}`;
 ---
