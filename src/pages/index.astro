@@ -60,24 +60,20 @@ const services = [
     </div>
   </section>
 
-  <!-- Intro / about -->
+  <!-- Featured projects -->
   <section class="container-page py-20 sm:py-28">
-    <div class="grid gap-10 md:grid-cols-2 md:gap-16">
-      <h2 class="font-serif text-3xl sm:text-4xl">
-        Una fabbrica di idee e progetti, libera dalle costrizioni di un pensiero preordinato.
-      </h2>
-      <div class="space-y-4 text-ink/80">
-        <p>
-          Lo studio Free Space Factory, con sede a Roma, è stato fondato nel {SITE.foundingYear} dagli
-          architetti {SITE.founders.join(' e ')} e si occupa di progettazione architettonica a tutte
-          le scale: dall'impianto urbano, con particolare attenzione all'urbanistica partecipata,
-          fino alle ristrutturazioni di appartamenti e all'interior design.
-        </p>
-        <a href={u('/lo-studio/')} class="inline-block font-medium text-brand-600 hover:underline">
-          Scopri lo studio &rarr;
-        </a>
-      </div>
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="font-serif text-3xl sm:text-4xl">Progetti</h2>
+      <a href={u('/progetti/')} class="hidden font-medium text-brand-600 hover:underline sm:inline-block">
+        Vedi tutti &rarr;
+      </a>
     </div>
+    <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+    <a href={u('/progetti/')} class="mt-10 inline-block font-medium text-brand-600 hover:underline sm:hidden">
+      Vedi tutti i progetti &rarr;
+    </a>
   </section>
 
   <!-- Services -->
@@ -100,20 +96,24 @@ const services = [
     </div>
   </section>
 
-  <!-- Featured projects -->
+  <!-- Intro / about -->
   <section class="container-page py-20 sm:py-28">
-    <div class="flex items-end justify-between gap-6">
-      <h2 class="font-serif text-3xl sm:text-4xl">Progetti</h2>
-      <a href={u('/progetti/')} class="hidden font-medium text-brand-600 hover:underline sm:inline-block">
-        Vedi tutti &rarr;
-      </a>
+    <div class="grid gap-10 md:grid-cols-2 md:gap-16">
+      <h2 class="font-serif text-3xl sm:text-4xl">
+        Una fabbrica di idee e progetti, libera dalle costrizioni di un pensiero preordinato.
+      </h2>
+      <div class="space-y-4 text-ink/80">
+        <p>
+          Lo studio Free Space Factory, con sede a Roma, è stato fondato nel {SITE.foundingYear} dagli
+          architetti {SITE.founders.join(' e ')} e si occupa di progettazione architettonica a tutte
+          le scale: dall'impianto urbano, con particolare attenzione all'urbanistica partecipata,
+          fino alle ristrutturazioni di appartamenti e all'interior design.
+        </p>
+        <a href={u('/lo-studio/')} class="inline-block font-medium text-brand-600 hover:underline">
+          Scopri lo studio &rarr;
+        </a>
+      </div>
     </div>
-    <div class="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-      {featuredProjects.map((project) => <ProjectCard project={project} />)}
-    </div>
-    <a href={u('/progetti/')} class="mt-10 inline-block font-medium text-brand-600 hover:underline sm:hidden">
-      Vedi tutti i progetti &rarr;
-    </a>
   </section>
 
   <!-- CTA -->
