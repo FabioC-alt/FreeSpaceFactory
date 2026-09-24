@@ -12,8 +12,8 @@ function isActive(href: string) {
 ---
 
 <header class="sticky top-0 z-40 border-b border-ink/10 bg-paper/95 backdrop-blur">
-  <div class="container-page flex h-24 items-center justify-between sm:h-28">
-    <a href={u('/')} class="flex shrink-0 items-center" aria-label={SITE.name}>
+  <div class="container-page relative flex h-24 items-center justify-between sm:h-28">
+    <a href={u('/')} class="flex shrink-0 items-center max-xl:mx-auto" aria-label={SITE.name}>
       <img src={u('images/logo/logo.png')} alt={SITE.name} class="h-14 w-auto sm:h-20" width="488" height="120" />
     </a>
 
@@ -38,16 +38,23 @@ function isActive(href: string) {
       </ul>
     </nav>
 
-    <details class="xl:hidden">
+    <details class="xl:hidden max-xl:absolute max-xl:right-6 max-xl:top-1/2 max-xl:-translate-y-1/2 sm:max-xl:right-8">
       <summary class="cursor-pointer list-none rounded border border-ink/20 px-3 py-2 text-sm">
         Menu
       </summary>
-      <nav aria-label="Navigazione mobile" class="absolute inset-x-0 top-full border-b border-ink/10 bg-paper">
-        <ul class="container-page flex flex-col gap-1 py-4 text-sm font-medium uppercase tracking-wide">
+      <nav aria-label="Navigazione mobile" class="absolute right-0 top-full mt-4 w-56 border border-ink/10 bg-paper shadow-lg sm:w-64">
+        <ul class="flex flex-col gap-1 p-4 text-sm font-medium uppercase tracking-wide">
           {
             NAV_LINKS.map((link) => (
               <li>
-                <a href={u(link.href)} class="block py-2">
+                <a
+                  href={u(link.href)}
+                  aria-current={isActive(link.href) ? 'page' : undefined}
+                  class:list={[
+                    'block py-2 transition-colors hover:text-brand-600',
+                    isActive(link.href) && 'text-brand-600 font-semibold',
+                  ]}
+                >
                   {link.label}
                 </a>
               </li>

@@ -5,7 +5,7 @@ export const SITE = {
   description:
     'Free Space Factory: studio di architetti a Roma fondato da Flavia Rosano e Laura Gramaccini. Progettazione, ristrutturazioni e lavori di interior design a Roma.',
   url: 'https://www.freespacefactory.it',
-  email: 'info@freespacefactory.it',
+  email: 'studio.freespace@gmail.com',
   city: 'Roma',
   country: 'IT',
   foundingYear: 2019,
@@ -15,7 +15,7 @@ export const SITE = {
   addressLocality: 'Roma',
   addressRegion: 'RM',
   // TODO: replace with your real Web3Forms access key (free, no account/password —
-  // get one at https://web3forms.com by entering info@freespacefactory.it).
+  // get one at https://web3forms.com by entering studio.freespace@gmail.com).
   // Until then, the contact form on /contatti/ will not deliver messages.
   web3formsAccessKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
 } as const;

@@ -52,9 +52,14 @@ const services = [
   <section class="bg-ink py-20 text-paper">
     <div class="container-page text-center">
       <h2 class="font-serif text-3xl sm:text-4xl">Parliamo del tuo progetto</h2>
-      <a href={u('/contatti/')} class="btn mt-8 inline-flex bg-paper text-ink hover:bg-brand-300">
-        Contattaci
-      </a>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href={u('/chiavi-in-mano/')} class="btn border-paper text-paper hover:bg-paper hover:text-ink">
+          Chiavi in mano
+        </a>
+        <a href={u('/contatti/')} class="btn bg-paper text-ink hover:bg-brand-300">
+          Contattaci
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>

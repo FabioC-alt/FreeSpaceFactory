@@ -16,3 +16,9 @@ npm-debug.log*
 
 # macOS
 .DS_Store
+
+# client raw asset dumps
+*.zip
+Sito per Fabio/
+BolotgnaPinoPosting.jpeg
+
