@@ -9,6 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "optimize:images": "node scripts/optimize-images.mjs",
     "fix:native-blocked": "node scripts/fix-wasm-fallback.mjs"
   },
   "dependencies": {

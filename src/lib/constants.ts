@@ -17,7 +17,10 @@ export const SITE = {
   // TODO: replace with your real Web3Forms access key (free, no account/password —
   // get one at https://web3forms.com by entering studio.freespace@gmail.com).
   // Until then, the contact form on /contatti/ will not deliver messages.
-  web3formsAccessKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
+  web3formsAccessKey:
+    import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ||
+    import.meta.env.WEB3FORMS_ACCESS_KEY ||
+    'YOUR_WEB3FORMS_ACCESS_KEY',
 } as const;
 
 export const NAV_LINKS = [
