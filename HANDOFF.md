@@ -31,22 +31,19 @@ reference sites for inspiration, verbal instructions relayed from calls.
   `docs/client-materials/PREVENTIVI PACCHETTI_17092026.docx` (this superseded an earlier draft with
   the same prices but more verbose wording; the earlier file no longer exists). **These prices are
   explicitly provisional per the client** — see Open Items below.
-- A working contact form (Web3Forms — no backend needed) is wired up but **not yet functional**
-  until a real access key is added (see Open Items).
+- A working contact form (Web3Forms — no backend needed) is wired up and configured via environment variables (`PUBLIC_WEB3FORMS_ACCESS_KEY` in `.env`).
 - The site currently runs two ways on this machine:
   - `npm run dev` (via `run-dev.cmd`, see below) for live-reloading local development.
   - A Docker container (`docker build -t freespacefactory .` then
     `docker run -d --name freespacefactory --restart unless-stopped -p 8081:80 freespacefactory`)
     serving a static production build at `http://localhost:8081`. This is a snapshot, not
     live-reloading — rebuild the image to pick up changes.
-- Not yet deployed publicly. No production domain is pointed at anything yet.
+- **Production deployment & DNS**: Deployed to GitHub Pages (`fabioc-alt.github.io`). Domain `freespacefactory.it` is registered on Serverplan with DNS managed via Cloudflare (`jacob.ns.cloudflare.com`, `vita.ns.cloudflare.com`). Full DNS and hosting architecture details are documented in [DNS_SETUP.md](DNS_SETUP.md).
 
 ## Open items — need client input, not just engineering
 
-1. **Web3Forms access key.** The contact form on `/contatti/` posts to Web3Forms but
-   `src/lib/constants.ts` still has a placeholder (`web3formsAccessKey: 'YOUR_WEB3FORMS_ACCESS_KEY'`).
-   Someone needs to go to web3forms.com, enter `info@freespacefactory.it`, get the free key, and
-   paste it in. Until then the form silently fails to deliver.
+1. **Web3Forms access key**: Configured locally in `.env` and set in GitHub Actions / env vars.
+2. **DNS Nameserver propagation**: Nameservers on the registrar need to point to Cloudflare (see [DNS_SETUP.md](DNS_SETUP.md)).
 2. **Mail forwarding.** The client wants messages to `info@freespacefactory.it` to reach both
    architects ("mail globale" / mail forwarded to Flavia and Laura). That's an email-provider-side
    forwarding rule (Gmail/Aruba/whatever hosts that inbox), not something configurable in this
