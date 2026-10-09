@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE } from '../../lib/constants';
+import { u } from '../../lib/url';
 
-const thankYouUrl = new URL('/contatti/grazie/', SITE.url).toString();
+const thankYouUrl = new URL(u('/contatti/grazie/'), Astro.site || SITE.url).toString();
 ---
 
 <BaseLayout
