@@ -6,6 +6,7 @@ export const SITE = {
     'Free Space Factory: studio di architetti a Roma fondato da Flavia Rosano e Laura Gramaccini. Progettazione, ristrutturazioni e lavori di interior design a Roma.',
   url: 'https://www.freespacefactory.it',
   email: 'studio.freespace@gmail.com',
+  instagram: 'https://www.instagram.com/freespacefactory/',
   city: 'Roma',
   country: 'IT',
   foundingYear: 2019,

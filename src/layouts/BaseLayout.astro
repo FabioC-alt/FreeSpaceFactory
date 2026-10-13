@@ -33,6 +33,7 @@ const organizationJsonLd = {
     addressCountry: SITE.country,
   },
   founder: SITE.founders.map((name) => ({ '@type': 'Person', name })),
+  sameAs: [SITE.instagram],
 };
 ---
 
